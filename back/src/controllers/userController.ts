@@ -25,6 +25,7 @@ export const getUserById = async (req: Request<{id:string},{},{}>, res: Response
    }
 };
 
+                        // *CREDENTIALS* 
 // POST /users/register => Registro de un nuevo usuario.
 export const register = async (req: Request, res: Response) => {
    try {
