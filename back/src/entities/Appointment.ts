@@ -1,4 +1,4 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { User } from "./User";
 
 export enum AppointmentStatus{
@@ -6,7 +6,10 @@ export enum AppointmentStatus{
     CANCELLED = "cancelled"
 }
 
-@Entity()
+@Entity({
+    name: "appointments"
+})
+
 export class Appointment {
     @PrimaryGeneratedColumn()
     id: number;
@@ -27,7 +30,8 @@ export class Appointment {
     @Column()
     description: string;
 
-    @ManyToOne(()=> User, user => user.appointments)
+    @ManyToOne(()=> User, (user) => user.appointments)
+    @JoinColumn ({name: "user_id"})
     user: User;
 
 }

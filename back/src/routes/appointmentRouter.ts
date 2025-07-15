@@ -1,5 +1,4 @@
 import { Router } from "express";
-import { getAllUsers, getUserById, login, register } from "../controllers/userController";
 import { cancel, getAllAppointments, getAppointmentById, schedule } from "../controllers/appointmentController";
 
 const appointmentRouter = Router();
@@ -10,6 +9,6 @@ appointmentRouter.get("/:id", getAppointmentById);
 
 appointmentRouter.post("/schedule", schedule);
 
-appointmentRouter.put("/cancel", cancel);
+appointmentRouter.put("/cancel/:id", cancel);
 
 export default appointmentRouter;
