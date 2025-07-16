@@ -19,5 +19,3 @@ export const AppDataSource = new DataSource({
 })
 
 
-
-export const AppointmentModel = AppDataSource.getRepository(Appointment);

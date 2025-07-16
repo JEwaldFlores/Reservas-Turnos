@@ -1,44 +1,59 @@
-import { AppointmentModel } from "../config/data-source";
-import ICreateAppointmentDto from "../dtos/ICreateAppointmentDto";
+
+import { IScheduleCreateAppointmentDto } from "../dtos/ICreateAppointmentDto";
 import { Appointment, AppointmentStatus } from "../entities/Appointment";
+import { User } from "../entities/User";
+import { appointmentRepository, userRepository } from "../repositories/indexRepository";
 import { getUserByIdService } from "./userService";
 
 
 // Retorna todas las citas 
 export const getAllAppointmentsService = async (): Promise<Appointment[]> => {
-  const allAppointments: Appointment[] = await AppointmentModel.find()
+  const allAppointments: Appointment[] = await appointmentRepository.find()
     return allAppointments;
 };
 // obtener cita por Id
-export const getAppointmentByIdService = async (id: number): Promise <Appointment> =>{
-    const appointment: Appointment | null = await AppointmentModel.findOneBy({id})
-    if (!appointment) throw Error("Cita no encontrada");
+export const getAppointmentByIdService = async (turnId: number): Promise <Appointment> =>{
+    const appointment: Appointment | null = await appointmentRepository.findOneBy({id: turnId})
+    if (!appointment) throw Error("Turno no encontrado");
     return appointment;
 };
 
 // crear una nueva cita, guardarla con el id del ususario que la creo 
-export const scheduleAppointmentService = async (createAppointmentDto: ICreateAppointmentDto) : Promise <Appointment>=> {
- const {date, time, description, userId} = createAppointmentDto
-  const user = await getUserByIdService(userId);
-//   no puede haber una cita si el usuario no existe
-  if (!user) throw new Error("Usuario no válido");
+export const scheduleAppointmentService = async (scheduleAppointmentDto: IScheduleCreateAppointmentDto) : Promise <Appointment>=> {
+ const {date, time, description, userId} = scheduleAppointmentDto
 
- const newAppointment: Appointment = AppointmentModel.create({ 
-    date,
-    time,
-    description,
-    status: AppointmentStatus.ACTIVE,
-    user,
+//  verificamos que exista el usuario
+ const user: User | null = await userRepository.findOneBy({id: userId})
+  if (!user) throw Error(`No existe usuario con id: ${userId}`);
+
+// creamos el nuevo turno 
+ const newAppointment: Appointment = appointmentRepository.create({ 
+    date, time, description,
   });
-  await AppointmentModel.save (newAppointment);
+//asociamos el usuario al turno creado 
+newAppointment.user = user;
+// guardamos el turno en la base de datos
+  await appointmentRepository.save (newAppointment);
   return newAppointment;
 };
+
+
    // cancelar la cita 
-export const cancelAppointmentService = async (id: number): Promise<void> => {
-  const appointment: Appointment | null = await AppointmentModel.findOneBy({id});
-  if (!appointment) throw Error(`No existe turno con id: ${id}`);
+export const cancelAppointmentService = async (turnId: number): Promise<void> => {
+  const appointment: Appointment | null = await appointmentRepository.findOneBy({id: turnId});
+  if (!appointment) throw Error(`No existe turno con id: ${turnId}`);
+
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  const appointmentDate = new Date(appointment.date);
+  appointmentDate.setHours(0, 0, 0, 0);
+
+  if(appointmentDate <= today){
+    throw new Error ("El turno solo puede cancelarse hasta el dia anterior a la cita");
+  }
 
   appointment.status = AppointmentStatus.CANCELLED;
-  await AppointmentModel.save (appointment);
+  await appointmentRepository.save (appointment);
   return;
 };
