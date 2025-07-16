@@ -4,16 +4,6 @@ import { validateCredentialService } from "../services/credentialService";
 import { User } from "../entities/User";
 import { Credential } from "../entities/Credential";
 
-
-// export const getAllUsers = async (req: Request, res: Response) => {
-//    try {
-//        const users: IUser[] = await getAllUsersService();
-//        res.status(200).json (users);
-//    } catch (error:any) {
-//       res.status(404).json({message: error.message});
-//    }
-// };
-
 // GET /users => Obtener el listado de todos los usuarios.
 export const getAllUsers = async (req: Request, res: Response) => {
    try {
@@ -29,7 +19,7 @@ export const getAllUsers = async (req: Request, res: Response) => {
 export const getUserById = async (req: Request<{id:string},{},{}>, res: Response) => {
    const {id} = req.params;
    try {
-      const user: User = await getUserByIdService (Number(id));
+      const user: User | null = await getUserByIdService (Number(id));
       res.status(200).json(user);
    } catch (error:any) {
        res.status(404).json({message: error.message});
@@ -55,17 +45,15 @@ export const login = async (req: Request, res: Response) => {
    try {
       const {username, password} = req.body;
       // VALIDAR
-      const credential: Credential = await validateCredentialService({username, password})
+      const credentialId: number = await validateCredentialService({username, password})
       // buscar usuario por credentialId
-      const user = await findUserByCredentialId(credential.id);
+      const user = await findUserByCredentialId(credentialId);
       if (!user) throw new Error ("Usuario no encontrado")
       res.status(200).json ({
          login: true,
          user,
-         // credential,  //QUITAR: SOLO PARA PRUEBA 
       });
    } catch (error:any) {
        res.status(400).json({message: error.message});
    }
-   
 };

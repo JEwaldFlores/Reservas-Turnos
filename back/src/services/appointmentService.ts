@@ -6,13 +6,13 @@ import { getUserByIdService } from "./userService";
 
 // Retorna todas las citas 
 export const getAllAppointmentsService = async (): Promise<Appointment[]> => {
-  const allAppointments = await AppointmentModel.find()
+  const allAppointments: Appointment[] = await AppointmentModel.find()
     return allAppointments;
 };
 // obtener cita por Id
 export const getAppointmentByIdService = async (id: number): Promise <Appointment> =>{
-    const appointment = await AppointmentModel.findOneBy({id})
-    if (!appointment) throw new Error("Cita no encontrada");
+    const appointment: Appointment | null = await AppointmentModel.findOneBy({id})
+    if (!appointment) throw Error("Cita no encontrada");
     return appointment;
 };
 
@@ -23,7 +23,7 @@ export const scheduleAppointmentService = async (createAppointmentDto: ICreateAp
 //   no puede haber una cita si el usuario no existe
   if (!user) throw new Error("Usuario no válido");
 
- const newAppointment = AppointmentModel.create({ 
+ const newAppointment: Appointment = AppointmentModel.create({ 
     date,
     time,
     description,
@@ -34,11 +34,11 @@ export const scheduleAppointmentService = async (createAppointmentDto: ICreateAp
   return newAppointment;
 };
    // cancelar la cita 
-export const cancelAppointmentService = async (id: number): Promise<Appointment> => {
-  const appointment = await AppointmentModel.findOneBy({id});
-  if (!appointment) throw new Error("Cita no encontrada");
+export const cancelAppointmentService = async (id: number): Promise<void> => {
+  const appointment: Appointment | null = await AppointmentModel.findOneBy({id});
+  if (!appointment) throw Error(`No existe turno con id: ${id}`);
 
   appointment.status = AppointmentStatus.CANCELLED;
   await AppointmentModel.save (appointment);
-  return appointment;
+  return;
 };
