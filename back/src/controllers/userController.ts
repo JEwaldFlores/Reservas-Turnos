@@ -2,15 +2,19 @@ import { Request, Response } from "express";
 import { createUserService, findUserByCredentialId, getAllUsersService, getUserByIdService } from "../services/userService";
 import { validateCredentialService } from "../services/credentialService";
 import { User } from "../entities/User";
-import { Credential } from "../entities/Credential";
+
 
 // GET /users => Obtener el listado de todos los usuarios.
 export const getAllUsers = async (req: Request, res: Response) => {
    try {
        const users: User[] = await getAllUsersService();
        res.status(200).json (users);
-   } catch (error:any) {
-      res.status(500).json({message: error.message});
+   } catch (error) { 
+      if(error instanceof Error){
+       res.status(404).json({message: error.message});
+      } else{
+       res.status(500).json({message: "Error Inesperado", error});
+      }
    }
 };
 
@@ -21,8 +25,12 @@ export const getUserById = async (req: Request<{id:string},{},{}>, res: Response
    try {
       const user: User | null = await getUserByIdService (Number(id));
       res.status(200).json(user);
-   } catch (error:any) {
-       res.status(404).json({message: error.message});
+   } catch (error) { 
+      if(error instanceof Error){
+        res.status(404).json({message: error.message});  
+      } else {
+       res.status(500).json({message: "Error Inesperado", error});
+      }
    }
 };
 
@@ -35,8 +43,13 @@ export const register = async (req: Request, res: Response) => {
          name, email, birthdate, nDni, username, password
       })
       res.status(201).json(newUser);
-   } catch (error:any) {
-      res.status(400).json({message: error.message});
+   } catch (error) { 
+      if(error instanceof Error){
+         res.status(400).json({message: error.message});
+      } else{
+         res.status(500).json({message: "Error Inesperado", error});   
+      }
+      
    }
 };
 
@@ -53,7 +66,12 @@ export const login = async (req: Request, res: Response) => {
          login: true,
          user,
       });
-   } catch (error:any) {
-       res.status(400).json({message: error.message});
+   } catch (error) { 
+      if(error instanceof Error){
+           res.status(400).json({message: error.message});
+      } else {
+           res.status(500).json({message: "Error Inesperado", error});
+      }
+     
    }
 };

@@ -3,7 +3,7 @@ import { IScheduleCreateAppointmentDto } from "../dtos/ICreateAppointmentDto";
 import { Appointment, AppointmentStatus } from "../entities/Appointment";
 import { User } from "../entities/User";
 import { appointmentRepository, userRepository } from "../repositories/indexRepository";
-import { getUserByIdService } from "./userService";
+
 
 
 // Retorna todas las citas 

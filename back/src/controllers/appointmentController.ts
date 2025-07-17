@@ -7,8 +7,12 @@ export const getAllAppointments = async (req: Request, res: Response): Promise<v
    try {
       const allAppointments: Appointment[] = await getAllAppointmentsService();
       res.status(200).json(allAppointments);
-   } catch (error:any) {
+   } catch (error) { 
+      if(error instanceof Error){
          res.status(404).json ({message: error.message});
+      } else {
+         res.status(500).json ({message: "Error Inesperado", error});
+      }
    }
 };
 // GET /appointments/:id => Obtener el detalle de un turno específico.
@@ -17,10 +21,15 @@ export const getAppointmentById = async (req: Request <{turnId: string}, {}, {}>
    try {
    const appointment = await getAppointmentByIdService (Number(turnId));
       res.status(200).json(appointment);
-   } catch (error: any) {
+   } catch (error) { 
+      if(error instanceof Error){
        res.status(404).json ({message: error.message});
+      } else {
+         res.status(500).json ({message: "Error Inesperado", error});
+      }
    }
 };
+
 // POST /appointments/schedule => Agendar un nuevo turno.
 export const schedule = async (req: Request, res: Response): Promise <void> => {
    const {date, time, description, userId} = req.body;
@@ -29,8 +38,12 @@ export const schedule = async (req: Request, res: Response): Promise <void> => {
          date, time, description, userId,
       })
       res.status(201).json(newAppointment);
-   } catch (error: any) {
-      res.status(400).json ({message: error.message});
+   } catch (error) { 
+      if(error instanceof Error){
+       res.status(400).json ({message: error.message});
+      } else {
+         res.status(500).json ({message: "Error Inesperado", error});
+      }
    }
    
 };
@@ -40,9 +53,13 @@ export const cancel = async (req: Request <{turnId: string}, {}, {}>, res: Respo
     const { turnId } = req.params;
    try {   
    await cancelAppointmentService (Number(turnId));  
-    res.status(200).json({message:`Turno con id: ${turnId}cancelado`});  
-   } catch (error: any) {
+    res.status(200).json({message:`Turno con id: ${turnId} cancelado`});  
+   } catch (error) { 
+      if(error instanceof Error){
        res.status(404).json ({message: error.message});
+      } else {
+          res.status(500).json ({message: "Error Inesperado", error});
+      }
    }
   
 };
