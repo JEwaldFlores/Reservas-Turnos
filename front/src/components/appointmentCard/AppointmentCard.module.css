@@ -1,0 +1,29 @@
+.container{
+    background-color: rgb(146, 145, 143);
+    color: black;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: center;
+    padding: 20px;
+    margin: 30px;
+    span{
+        flex: 0 0 8%;
+        text-align: center;
+    }
+}
+
+.active{
+    color: rgb(255, 255, 255);
+    &:hover{
+        color: aliceblue;
+        background-color: rgb(95, 65, 65);
+        border-radius: 5px;
+        cursor: pointer;
+    }
+}
+
+.cancelled{
+    color: red;
+}

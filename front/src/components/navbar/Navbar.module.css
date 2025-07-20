@@ -1,0 +1,43 @@
+.container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: rgb(173, 167, 158);
+    color: black;
+    padding: .1em;
+    align-items: center;
+    border-radius: 50px;
+    margin-top: 10px;
+}
+.logoSection{
+    display: flex;
+    flex-direction: row;
+    img{
+        height: 150px;
+        padding: 20px 0 0 20px;
+    }
+}
+.linkSection{
+    margin-left: auto;      
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    padding: 40px 0 0 0;
+    gap: 2em;
+    color: rgb(5, 5, 5);
+    font-size: 1.3em;
+    text-shadow: 2px 2px 4px black;
+    span:hover{
+        color: white;
+        cursor: pointer;
+    }
+}
+.avatar{
+    display: grid;
+    place-items: center;
+    height: 100%;
+    img{
+        width: 150px;
+        padding: 20px 40px 0 0;
+    }
+}

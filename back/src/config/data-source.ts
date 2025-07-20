@@ -10,12 +10,12 @@ export const AppDataSource = new DataSource({
     username: DB_USER,
     password: DB_PASSWORD,
     database: DB_NAME,
-    synchronize: true, /*desarrollo*/
-    dropSchema: true, /*desarrollo*/
+    synchronize: false, /*desarrollo*/
+    dropSchema: false, /*desarrollo*/
     logging: false,
     entities: [ User, Appointment, Credential],
     subscribers: [],
     migrations: [],
-})
+});
 
 

@@ -1,0 +1,26 @@
+.aboutContainer{
+  display: flex;
+  flex-direction: column; /* ← Esto es clave */
+  padding: 20px 30px;
+  margin: 20px;
+  justify-content: center;
+  align-items: center; /* Centra horizontalmente */
+  background-color: rgb(109, 101, 101);
+  border-radius: 20px;
+  text-align: center;
+  gap: 20px;
+  img{
+    height: 50px;
+    padding-right: 10px;
+    border-radius: 10px;
+  }
+}
+.textSection{
+    line-height: 1.2;
+    text-align: center;
+}
+.textSection h2,
+.textSection h3,
+.textSection p{
+    margin: 4px 0;
+}
