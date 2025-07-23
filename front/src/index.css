@@ -25,6 +25,41 @@ body {
   background-color: rgb(240, 240, 240);
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+body.fondo-appointments {
+  background-image: url(/fondo.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  background-color: unset; 
+}
+body.fondo-reservar {
+  background-image: url('/fondo2.png'); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  background-color: unset;
+}
+body.fondo-home {
+  background-image: url('/fondohome.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  background-color: unset;
+}
+body.fondo-login,
+body.fondo-register,
+body.fondo-about {
+  background-image: url('/fondo3.png'); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  background-color: unset;
+}
+
 
 /**
  * Render the `main` element consistently in IE.

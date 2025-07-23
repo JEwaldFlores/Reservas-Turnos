@@ -39,10 +39,10 @@ export const getUserById = async (req: Request<{id:string},{},{}>, res: Response
 export const register = async (req: Request, res: Response) => {
    try {
       const {name, email, birthdate, nDni, username, password } = req.body;
-      const newUser: User = await createUserService({
+      await createUserService({
          name, email, birthdate, nDni, username, password
-      })
-      res.status(201).json(newUser);
+      });
+      res.status(201).json({message:"Usuario registrado con éxito"});
    } catch (error) { 
       if(error instanceof Error){
          res.status(400).json({message: error.message});

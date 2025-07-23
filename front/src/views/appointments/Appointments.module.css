@@ -1,0 +1,55 @@
+.container {
+
+  padding-top: 80px; 
+  padding: 2rem;
+   min-height: 100vh;
+  font-family: 'Poiret One', cursive; 
+  
+}
+
+h2 {
+  font-size: 2.2rem;
+  color: #4b3621;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.error {
+  color: red;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.list {
+  
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  border: 1px solid #ccc;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  background-color: #bcb7b7;
+}
+
+.cancelButton {
+  padding: 0.4rem 0.8rem;
+  margin: 0.8rem auto 0 auto;
+  display: block;
+  background-color: #815656;
+  color: white;
+  border: none;
+  margin-top: 0.5rem;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.cancelButton:hover {
+  background-color:#b37272 ;
+}

@@ -9,7 +9,7 @@ import { appointmentRepository, userRepository } from "../repositories/indexRepo
 // Retorna todas las citas 
 export const getAllAppointmentsService = async (): Promise<Appointment[]> => {
   const allAppointments: Appointment[] = await appointmentRepository.find()
-    return allAppointments;
+  return allAppointments;
 };
 // obtener cita por Id
 export const getAppointmentByIdService = async (turnId: number): Promise <Appointment> =>{
@@ -50,7 +50,7 @@ export const cancelAppointmentService = async (turnId: number): Promise<void> =>
   appointmentDate.setHours(0, 0, 0, 0);
 
   if(appointmentDate <= today){
-    throw new Error ("El turno solo puede cancelarse hasta el dia anterior a la cita");
+    throw new Error ("🚩El turno solo puede cancelarse hasta el dia anterior a la cita");
   }
 
   appointment.status = AppointmentStatus.CANCELLED;

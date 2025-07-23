@@ -14,11 +14,13 @@ const AppointmentCard = ({id, date, time, description, status})=>{
           <span>{formattedDate}</span>
           <span>{time}</span>
           <span>{description}</span>
-        {
+          {
             status === "active"
             ? ( <span className={styles.active}onClick={handleClick}>{status}</span>)
             : (<span className={styles.cancelled}>{status}</span>)
           }
+
+          
         </div>
     )
 }

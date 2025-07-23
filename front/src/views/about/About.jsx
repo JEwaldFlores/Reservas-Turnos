@@ -1,3 +1,4 @@
+import { useEffect } from "react"; 
 import styles from "./About.module.css"
 const About= () => {
 const imagesAndData1= [
@@ -39,16 +40,25 @@ const imagesAndData2 = [
         href: "https://reactrouter.com/en/main",
     },
         {
-        src: "https://cdn.worldvectorlogo.com/logos/redux.svg",
-        alt: "Redux",
-        href: "https://redux.js.org/",
-    },
+        src: "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/formik.svg",
+        alt: "Formik",
+        href: "https://formik.org/",
+           
+      },
 ];
+
+        useEffect(() => {
+        document.body.classList.add("fondo-about");
+
+        return () => {
+            document.body.classList.remove("fondo-about");
+        };
+        }, []);
 return(
 <div className={styles.aboutContainer}>
     <div className={styles.textSection}>
-    <h2>Datos de esta aplicación</h2>
-    <h3>Proyecto para el Módulo 3 - Henry</h3>
+    <h2 className={styles.titulo}>Datos de esta aplicación</h2>
+    <h3 >Proyecto para el Módulo 3 - Henry</h3>
     <p><strong>Carrera:</strong> Desarrollo Full Stack</p>
     <p>Este proyecto fue desarrollado con las siguientes tecnologías...</p>
     </div>

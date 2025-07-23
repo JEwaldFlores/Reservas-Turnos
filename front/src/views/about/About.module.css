@@ -1,26 +1,39 @@
 .aboutContainer{
-  display: flex;
-  flex-direction: column; /* ← Esto es clave */
-  padding: 20px 30px;
-  margin: 20px;
-  justify-content: center;
-  align-items: center; /* Centra horizontalmente */
-  background-color: rgb(109, 101, 101);
-  border-radius: 20px;
-  text-align: center;
-  gap: 20px;
   img{
     height: 50px;
     padding-right: 10px;
     border-radius: 10px;
   }
+ display: flex;
+  flex-direction: column; 
+  padding: 2rem;
+  margin: 4rem auto;
+  max-width: 600px; /* Reducción del ancho */
+  background-color: rgba(71, 62, 62, 0.92);
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  font-family: 'Poiret One', cursive;
+  gap: 2rem;
+  align-items: center;
+  background: linear-gradient(
+    to right,
+    #8a746d, 
+    #a9938b, 
+    #dcc6bc 
+  )
+
 }
 .textSection{
     line-height: 1.2;
     text-align: center;
+    color: aliceblue;
 }
 .textSection h2,
 .textSection h3,
 .textSection p{
     margin: 4px 0;
+}
+.titulo{
+  color: rgb(255, 255, 255);
 }
