@@ -8,7 +8,7 @@
   flex-direction: column; 
   padding: 2rem;
   margin: 4rem auto;
-  max-width: 600px; /* Reducción del ancho */
+  max-width: 600px; 
   background-color: rgba(71, 62, 62, 0.92);
   border-radius: 20px;
   text-align: center;

@@ -21,9 +21,9 @@ const Appointments = () => {
         const user = JSON.parse(userData).user;
 
          const response = await axios.get(`${import.meta.env.VITE_API_URL}/users/${user.id}`);
-         const userFromApi = response.data; //MODIFICACION 
+         const userFromApi = response.data; 
         
-         //MODIFICACION SE AGREGO ESTO
+       
        
         setAppointments(userFromApi.appointments);
 
@@ -31,7 +31,7 @@ const Appointments = () => {
         storedUser.appointments = userFromApi.appointments;
         localStorage.setItem("user", JSON.stringify(storedUser));
 
-        // setAppointments(Array.isArray(data) ? data : []);
+        
       } catch (err) {
         console.error("Error al obtener turnos:", err);
         setError("No se pudieron obtener los turnos.");

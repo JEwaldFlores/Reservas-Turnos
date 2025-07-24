@@ -8,10 +8,14 @@ const validateAppointment = (
 ) =>{
 const { date, time, description} = req.body;
 try {
- // validacion de la fecha 
+
  if (!date) throw new Error ("El campo date es requerido");
-    const appointmentDate = new Date(date);
-//  fines de semana no laborables
+
+  const [year, month, day] = date.split("-");
+  const appointmentDate = new Date(Number(year), Number(month) - 1, Number(day));
+  appointmentDate.setHours(0, 0, 0, 0);
+
+
     const dayOfWeek = appointmentDate.getDay();
     if (dayOfWeek === 0 || dayOfWeek === 6){
         throw new Error ("Los turnos solo pueden agendarse de lunes a Viernes");
@@ -27,7 +31,7 @@ try {
     if(appointmentDate < tomorrow || appointmentDate > in14Days){
         throw new Error( "La fecha debe estar entre mañana y 14 días")
     }
- //  validacion de tiempo 
+ 
     if (!time) throw new Error("El campo time es requerido");
         const validTimes = [
             "08:00", "08:30", "09:00", "09:30",
@@ -41,7 +45,7 @@ try {
     if (!validTimes.includes (time)){
         throw new Error("El campo time debe estar enre las 8:00 y 20:00 en intervalos de 30 minutos");
     }
- //validacion de la descripcion
+ 
     if (!description)
         throw new Error ("El campo description es requerido");
     if (typeof description !== "string") throw new Error ("El campo description debe ser un string");

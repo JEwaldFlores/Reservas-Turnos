@@ -17,8 +17,11 @@ export const validateAppointment = (values) => {
   const in14Days = new Date(today);
   in14Days.setDate(today.getDate() + 14);
 
-  const selectedDate = new Date(values.date);
+  // const selectedDate = new Date(values.date);
+  const [year, month, day] = values.date.split("-");
+  const selectedDate = new Date(Number(year), Number(month) - 1, Number(day));
   selectedDate.setHours(0, 0, 0, 0);
+   
 
   const dayOfWeek = selectedDate.getDay();
 

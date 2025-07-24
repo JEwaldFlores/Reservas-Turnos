@@ -49,7 +49,7 @@ export const cancelAppointmentService = async (turnId: number): Promise<void> =>
   const appointmentDate = new Date(appointment.date);
   appointmentDate.setHours(0, 0, 0, 0);
 
-  if(appointmentDate <= today){
+  if(appointmentDate < today){
     throw new Error ("🚩El turno solo puede cancelarse hasta el dia anterior a la cita");
   }
 

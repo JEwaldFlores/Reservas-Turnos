@@ -1,7 +1,7 @@
 import styles from "./AppointmentCard.module.css";
 const AppointmentCard = ({id, date, time, description, status})=>{
     
-    // formato de fecha 
+    
     const parseDate= new Date (date);
     const formattedDate=`${parseDate.getDate()+ 1}/ ${parseDate.getMonth() + 1} / ${parseDate.getFullYear()}`;
     
