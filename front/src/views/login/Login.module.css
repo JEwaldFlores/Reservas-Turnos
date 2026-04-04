@@ -1,5 +1,6 @@
 .container {
-  max-width: 300px;
+  width: 90%;
+  max-width: 350px;
   margin: 3rem auto;
   padding: 2rem;
   border: 1px solid rgba(255, 223, 182, 0.881);
@@ -9,7 +10,7 @@
 
 .input {
   display: block;
-  width: 90%;
+  width: 100%;
   padding: 0.6rem 1rem;
   margin-bottom: 0.75rem;
   border-radius: 0.5rem;
@@ -18,14 +19,11 @@
 }
 
 .button {
-  font-family: 'Poiret one',cursive;
+  font-family: 'Poiret one', cursive;
   background-color: rgb(160, 147, 131);
   color: white;
   padding: 0.7rem;
-  width: 35%;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+  width: 100%;
   border: none;
   border-radius: 0.5rem;
   font-weight: bold;
@@ -49,9 +47,20 @@
   font-weight: bold;
 }
 
-.text{
-    text-align: center;
-    margin-bottom: 1.5rem;
-    color: #ffffff;
+.text {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #ffffff;
+}
 
+/* 🔥 RESPONSIVE EXTRA */
+@media (max-width: 480px) {
+  .container {
+    padding: 1.5rem;
+    margin: 2rem auto;
+  }
+
+  .text {
+    font-size: 1.2rem;
+  }
 }
