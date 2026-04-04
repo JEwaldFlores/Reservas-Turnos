@@ -1,59 +1,66 @@
-.container{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    background-color: rgb(173, 167, 158);
-    color: rgb(214, 214, 214);
-    padding: .1em;
-    align-items: center;
-    border-radius: 50px;
-    margin-top: 20px;
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: rgb(173, 167, 158);
+  color: rgb(214, 214, 214);
+  padding: 0.5em 1em;
+  align-items: center;
+  border-radius: 30px;
+  margin-top: 20px;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
-.logoSection{
-    display: flex;
-    flex-direction: row;
-    img{
-        height: 150px;
-        padding: 7px 0 0 20px;
-        
-    }
+
+.logoSection {
+  display: flex;
+  flex-direction: row;
 }
-.linkSection{
-    font-family: 'Poiret one',cursive;
-    margin-left: auto;      
-    display: flex;
-    flex-direction: row;
-    align-items: flex-end;
-    padding: 40px 0 0 0;
-    gap: 2em;
-    color: rgb(255, 255, 255);
-    font-size: 1.3em;
-    text-shadow: 2px 2px 4px black;
+
+.logoSection img {
+  height: 90px;
+  padding: 0;
 }
+
+.linkSection {
+  font-family: 'Poiret one', cursive;
+  margin-left: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  color: rgb(255, 255, 255);
+  font-size: 1.1em;
+  text-shadow: 2px 2px 4px black;
+}
+
 .link {
   font-family: 'Poiret one', cursive;
   color: rgb(255, 255, 255);
-  font-size: 1.3em;
+  font-size: 1.1em;
   text-shadow: 2px 2px 4px black;
   text-decoration: none;
-  margin: 0 1em;
+  margin: 0;
 }
 
 .link:hover {
   color: rgb(61, 51, 42);
   cursor: pointer;
 }
-.avatar{
+
+.avatar {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 0 20px;
-
+  padding: 0 10px;
 }
-.avatarImg{
-  width: 70px;
-  height: 70px;
+
+.avatarImg {
+  width: 60px;
+  height: 60px;
   object-fit: contain;
   margin-bottom: 5px;
 }
@@ -65,15 +72,59 @@
   font-size: 1em;
   font-family: 'Poiret One', cursive;
   cursor: pointer;
-  padding: 0 10px;
+  padding: 0;
 }
 
 .logoutButton:hover {
   color: rgb(216, 181, 135);
 }
+
 .username {
-  font-family:'Poiret One', cursive;
+  font-family: 'Poiret One', cursive;
   font-size: 1rem;
-  color: #000000; 
+  color: #000000;
   font-weight: 400;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    border-radius: 20px;
+    padding: 1rem;
+  }
+
+  .logoSection {
+    justify-content: center;
+  }
+
+  .logoSection img {
+    height: 75px;
+  }
+
+  .linkSection {
+    margin-left: 0;
+    width: 100%;
+    justify-content: center;
+    gap: 0.8rem;
+    font-size: 1em;
+  }
+
+  .link {
+    font-size: 1em;
+  }
+
+  .avatar {
+    padding: 0;
+  }
+
+  .avatarImg {
+    width: 50px;
+    height: 50px;
+  }
+
+  .username {
+    font-size: 0.95rem;
+    text-align: center;
+  }
 }
