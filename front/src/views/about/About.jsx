@@ -23,7 +23,7 @@ const imagesAndData1= [
         href: "https://typeorm.io/",
     },
     {
-        src: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Postgresql_elephant.svg/99px-Postgresql_elephant.svg.png",
+        src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
         alt: "PostgreSQL",
         href: "https://www.postgresql.org/",
     },
