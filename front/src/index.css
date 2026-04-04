@@ -386,3 +386,50 @@ template {
 [hidden] {
   display: none;
 }
+
+/* 🔥 FIX GLOBAL RESPONSIVE */
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+#root {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* 🔥 CONTENEDORES */
+.container {
+  width: 100% !important;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* 🔥 INPUTS */
+input, button {
+  width: 100% !important;
+}
+
+/* 🔥 IMÁGENES */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* 🔥 MOBILE */
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+
+  h1, h2, h3 {
+    text-align: center;
+  }
+}

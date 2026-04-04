@@ -53,7 +53,7 @@
   color: #ffffff;
 }
 
-/* 🔥 RESPONSIVE EXTRA */
+/*  RESPONSIVE */
 @media (max-width: 480px) {
   .container {
     padding: 1.5rem;
