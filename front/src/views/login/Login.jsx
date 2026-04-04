@@ -26,7 +26,7 @@ const Login = () => {
         alert("⭐ Inicio de sesión exitoso");
         resetForm();
 
-        window.location.href = "/home";
+        navigate("/home");
       } catch (error) {
         console.error("Error al iniciar sesión:", error);
         setStatus(error.response?.data?.error || "Error al iniciar sesión");
