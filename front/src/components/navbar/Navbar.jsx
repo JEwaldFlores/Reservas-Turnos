@@ -36,16 +36,17 @@ const Navbar = () => {
             </>
             )}
             <Link to="/about" className={styles.link}>ABOUT</Link>
-            {user && (
-            <button className={styles.logoutButton} onClick={handleLogout}>
-                Cerrar sesión
-            </button>
-            )}
+           
       </div>
 
       <div className={styles.avatar}>
         <img src={avatar} alt="avatar" className={styles.avatarImg}/>
          {user && <p className={styles.username}>{user.name}</p>}
+          {user && (
+            <button className={styles.logoutButton} onClick={handleLogout}>
+                Cerrar sesión
+            </button>
+            )}
       </div>
     </div>
   );
