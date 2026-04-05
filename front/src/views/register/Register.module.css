@@ -58,3 +58,27 @@ h2 {
   text-align: center;
   margin-top: 1rem;
 }
+
+@media (max-width: 768px) {
+  input[type="date"] {
+    height: 56px;
+    min-height: 56px;
+    padding: 0 1rem;
+    font-size: 16px;
+    line-height: 56px;
+    box-sizing: border-box;
+  }
+
+  input[type="date"]::-webkit-date-and-time-value {
+    text-align: left;
+  }
+
+  input[type="date"]::-webkit-datetime-edit {
+    padding: 0;
+    line-height: 56px;
+  }
+
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    margin-left: 8px;
+  }
+}
