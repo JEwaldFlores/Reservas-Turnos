@@ -17,7 +17,7 @@ const Home = () => {
   }, []);
     return(
         <div>
-            <h1 className={styles.titulo}>Tu espacio para reconectar</h1>
+            <h1 className={Styles.titulo}>Tu espacio para reconectar</h1>
                 <div className={styles.card}>
                     {textCardToShow.map((item, index,) =>(
                         <Card key={index} text={item.text} image={item.image}/>
