@@ -1,6 +1,7 @@
 .titulo{
     font-family: 'Poiret one',cursive;
     color: rgb(116, 72, 11);
-    margin-left: 2em;
     text-align: center;
+    max-width: 300px;
+    margin: 2rem auto;
 }
