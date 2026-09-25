@@ -10,6 +10,10 @@ export const AppDataSource = new DataSource({
     username: DB_USER,
     password: DB_PASSWORD,
     database: DB_NAME,
+
+    ssl: {
+        rejectUnauthorized: false,
+    },
     synchronize: true, /*desarrollo*/
     dropSchema: false, /*desarrollo*/
     logging: false,
