@@ -8,7 +8,7 @@ const imagesAndData1= [
         href: "http://nodejs.org/en",
 
     },
-    {   src: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/1200px-Typescript_logo_2020.svg.png",
+    {   src: "/typescript.png",
         alt: "Typescript",
         href: "https://www.typescriptlang.org/es/",
     },
